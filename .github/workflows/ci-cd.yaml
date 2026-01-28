@@ -79,21 +79,21 @@ jobs:
     # ----------------------------------------------------
     # CREATE GHCR SECRET (FOR MINIKUBE)
     # ----------------------------------------------------
-    - name: Create GHCR pull secret in Minikube
-      run: |
-        kubectl delete secret ghcr-secret --ignore-not-found=true
+ #   - name: Create GHCR pull secret in Minikube
+ #     run: |
+ #       kubectl delete secret ghcr-secret --ignore-not-found=true
 
-        kubectl create secret docker-registry ghcr-secret \
-          --docker-server=ghcr.io \
-          --docker-username=faisalumerr \
-          --docker-password=${{ secrets.GHCR_PAT }} \
-          --docker-email=dummy@example.com
+ #       kubectl create secret docker-registry ghcr-secret \
+ #         --docker-server=ghcr.io \
+ #         --docker-username=faisalumerr \
+ #         --docker-password=${{ secrets.GHCR_PAT }} \
+ #         --docker-email=dummy@example.com
 
     # ----------------------------------------------------
     # APPLY MANIFESTS
     # ----------------------------------------------------
-    - name: Deploy manifests
-      run: kubectl apply -f k8s/
+ #   - name: Deploy manifests
+ #     run: kubectl apply -f k8s/
 
     # ----------------------------------------------------
     # PATCH DEPLOYMENT (SET VERSION + IMAGEPULLSECRET)
@@ -113,5 +113,5 @@ jobs:
     # ----------------------------------------------------
     # WAIT FOR ROLLOUT
     # ----------------------------------------------------
-    - name: Wait for rollout
-      run: kubectl rollout status deployment/devsecops-app
+ #   - name: Wait for rollout
+ #     run: kubectl rollout status deployment/devsecops-app
