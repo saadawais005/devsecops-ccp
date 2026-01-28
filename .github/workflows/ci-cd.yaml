@@ -98,17 +98,17 @@ jobs:
     # ----------------------------------------------------
     # PATCH DEPLOYMENT (SET VERSION + IMAGEPULLSECRET)
     # ----------------------------------------------------
-    - name: Patch deployment with version + pull secret
-      run: |
-        VERSION=${{ steps.version.outputs.version }}
+ #   - name: Patch deployment with version + pull secret
+ #     run: |
+ #       VERSION=${{ steps.version.outputs.version }}
 
-        echo "Patching deployment to use image version: $VERSION"
+ #       echo "Patching deployment to use image version: $VERSION"
 
-        kubectl set image deployment/devsecops-app \
-          web=ghcr.io/${{ github.repository_owner }}/devsecops-app:$VERSION
+ #       kubectl set image deployment/devsecops-app \
+ #         web=ghcr.io/${{ github.repository_owner }}/devsecops-app:$VERSION
 
-        kubectl patch deployment devsecops-app \
-          -p '{"spec":{"template":{"spec":{"imagePullSecrets":[{"name":"ghcr-secret"}]}}}}'
+ #       kubectl patch deployment devsecops-app \
+ #         -p '{"spec":{"template":{"spec":{"imagePullSecrets":[{"name":"ghcr-secret"}]}}}}'
 
     # ----------------------------------------------------
     # WAIT FOR ROLLOUT
